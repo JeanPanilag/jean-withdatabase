@@ -1,15 +1,21 @@
 <?php
 session_start();
 
-$dbHost = '127.0.0.1';
-$dbUser = 'root';
-$dbPass = '';
-$dbName = 'notes_app';
+// Allow environment overrides for container/host setups
+$dbHost = getenv('DB_HOST') ?: '127.0.0.1';
+$dbPort = (int)(getenv('DB_PORT') ?: 3306);
+$dbUser = getenv('DB_USER') ?: 'root';
+$dbPass = getenv('DB_PASS') ?: '';
+$dbName = getenv('DB_NAME') ?: 'notes_app';
+$dbSocket = getenv('DB_SOCKET') ?: null; // e.g., /var/run/mysqld/mysqld.sock
 
-$mysqli = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
+// Suppress mysqli exceptions for cleaner error handling
+mysqli_report(MYSQLI_REPORT_OFF);
+
+$mysqli = @new mysqli($dbHost, $dbUser, $dbPass, $dbName, $dbPort, $dbSocket ?: null);
 if ($mysqli->connect_errno) {
     http_response_code(500);
-    echo 'Failed to connect to MySQL: ' . $mysqli->connect_error;
+    echo 'MySQL connection failed. Please verify DB settings (host/port/user/pass/name) and that MySQL is running.';
     exit;
 }
 
