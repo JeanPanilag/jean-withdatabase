@@ -26,6 +26,3 @@ function require_login() {
     }
 }
 
-?>
-
-
