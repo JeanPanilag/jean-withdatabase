@@ -8,22 +8,13 @@
     <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
-    <div class="appbar">
-        <div class="appbar-inner">
-            <div class="brand">
-                <span>Notes</span>
-                <span class="badge">PHP + MySQL</span>
-            </div>
-            <div class="actions">
-                <a class="btn secondary" href="register.php">Create account</a>
-            </div>
-        </div>
-    </div>
-    <div class="container">
+    <div class="auth-card">
         <div class="card">
             <div class="header">
-                <div class="title">Sign in</div>
-                <a href="register.php">Create account</a>
+                <div>
+                    <div class="title">Note App</div>
+                </div>
+                <div class="auth-subtitle">Login to continue</div>
             </div>
             <?php
             $error = '';
@@ -50,15 +41,17 @@
             <?php if ($error): ?><div class="flash error"><?php echo htmlspecialchars($error); ?></div><?php endif; ?>
             <form method="post" autocomplete="off">
                 <div>
-                    <label>Email</label>
-                    <input type="email" name="email" required />
+                    <label>Username</label>
+                    <input class="auth-input" type="email" name="email" required />
                 </div>
                 <div>
                     <label>Password</label>
-                    <input type="password" name="password" required />
+                    <input class="auth-input" type="password" name="password" required />
                 </div>
-                <button class="btn" type="submit">Sign in</button>
-                <div class="auth-links">No account? <a href="register.php">Create one</a></div>
+                <div class="actions">
+                    <button class="btn success" type="submit">Login</button>
+                    <a class="btn gray" href="register.php">Register</a>
+                </div>
             </form>
         </div>
     </div>
