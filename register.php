@@ -8,22 +8,13 @@
     <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
-    <div class="appbar">
-        <div class="appbar-inner">
-            <div class="brand">
-                <span>Notes</span>
-                <span class="badge">PHP + MySQL</span>
-            </div>
-            <div class="actions">
-                <a class="btn secondary" href="login.php">Sign in</a>
-            </div>
-        </div>
-    </div>
-    <div class="container">
+    <div class="auth-card">
         <div class="card">
             <div class="header">
-                <div class="title">Create your account</div>
-                <a href="login.php">Sign in</a>
+                <div>
+                    <div class="title">Note App</div>
+                </div>
+                <div class="auth-subtitle">Create your account</div>
             </div>
             <?php
             $error = '';
@@ -66,24 +57,27 @@
             <form method="post" autocomplete="off">
                 <div>
                     <label>Email</label>
-                    <input type="email" name="email" required />
+                    <input class="auth-input" type="email" name="email" required />
                 </div>
                 <div class="row">
                     <div>
                         <label>Password</label>
-                        <input type="password" name="password" minlength="6" required />
+                        <input class="auth-input" type="password" name="password" minlength="6" required />
                     </div>
                     <div>
                         <label>Confirm Password</label>
-                        <input type="password" name="confirm_password" minlength="6" required />
+                        <input class="auth-input" type="password" name="confirm_password" minlength="6" required />
                     </div>
                 </div>
-                <button class="btn" type="submit">Create account</button>
-                <div class="auth-links">Already have an account? <a href="login.php">Sign in</a></div>
+                <div class="actions">
+                    <button class="btn success" type="submit">Create account</button>
+                    <a class="btn gray" href="login.php">Sign in</a>
+                </div>
             </form>
         </div>
     </div>
 </body>
 </html>
+
 
 
